@@ -1,0 +1,13 @@
+.git
+.github
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.aws/
+secrets/
+.venv/
+venv/
+__pycache__/
+tests/

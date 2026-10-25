@@ -1,0 +1,10 @@
+services:
+  secure-app:
+    build: .
+    image: secure-secrets-deployment:local
+    container_name: secure-secrets-app
+    restart: unless-stopped
+    ports:
+      - "8081:8080"
+    env_file:
+      - .env
