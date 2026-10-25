@@ -13,6 +13,19 @@ pipeline {
             }
         }
 
+        stage('Prepare Runtime Configuration') {
+            steps {
+                sh '''
+                    set +x
+                    umask 077
+                    printf 'AWS_REGION=%s\\nSECRET_ARN=%s\\n' \
+                      "$AWS_REGION" "$SECRET_ARN" > .env
+                    chmod 600 .env
+                    echo "Runtime configuration created."
+                '''
+            }
+        }
+
         stage('Validate') {
             steps {
                 sh '''
